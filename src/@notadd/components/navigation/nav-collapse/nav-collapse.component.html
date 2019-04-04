@@ -1,0 +1,74 @@
+<ng-container *ngIf="!item.hidden">
+
+    <!-- 导航展开 -->
+    <ng-container *ngIf="!notaddConfig.layout.navbar.collapsed">
+        <div (click)="toggleCollapse($event)"
+             class="nav-link"
+             [ngClass]="item.classes"
+             matRipple>
+            <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+        </div>
+
+        <div class="children" [@slideInOut]="isCollapsed">
+            <ng-container *ngFor="let item of item.childMenus">
+                <notadd-nav-item *ngIf="!item.childMenus" [item]="item"></notadd-nav-item>
+                <notadd-nav-collapse *ngIf="item.childMenus" [item]="item"></notadd-nav-collapse>
+            </ng-container>
+        </div>
+    </ng-container>
+
+    <!-- 导航折叠 -->
+    <ng-container *ngIf="notaddConfig.layout.navbar.collapsed">
+        <div class="nav-link nav-collapsed"
+             [matMenuTriggerFor]="navMenu"
+             [matMenuTriggerData]="{items: item.childMenus}"
+             #menuTrigger="matMenuTrigger"
+             (mouseenter)="item.childMenus.length && openNavMenu($event);"
+             (mouseleave)="item.childMenus.length && closeNavMenu($event);">
+            <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+        </div>
+
+        <mat-menu class="nav-menu" #navMenu="matMenu" yPosition="above" hasBackdrop="false">
+            <div (mouseenter)="isEnterNavMenu = true" (mouseleave)="isEnterNavMenu = false; closeNavMenu($event);">
+                <ng-template matMenuContent let-items="items">
+                    <ng-container *ngFor="let item of items">
+                        <button *ngIf="item.childMenus"
+                                mat-menu-item
+                                [matMenuTriggerFor]="subMenu"
+                                (mouseenter)="setSubMenu(item);">{{item.menuName}}</button>
+
+                        <button *ngIf="!item.childMenus"
+                                mat-menu-item
+                                [routerLink]="item.menuUrl"
+                                [routerLinkActive]="['active', 'mat-accent-bg']"
+                                matRipple>{{item.menuName}}</button>
+                    </ng-container>
+                </ng-template>
+            </div>
+        </mat-menu>
+        <mat-menu #subMenu="matMenu" hasBackdrop="false">
+            <div (mouseenter)="isEnterNavMenu = true" (mouseleave)="isEnterNavMenu = false; closeNavMenu($event);">
+                <ng-template matMenuContent>
+                    <button mat-menu-item
+                            *ngFor="let subItem of subMenus"
+                            [routerLink]="subItem.menuUrl"
+                            [routerLinkActive]="['active', 'mat-accent-bg']"
+                            matRipple>
+                        {{subItem.menuName}}
+                    </button>
+                </ng-template>
+            </div>
+        </mat-menu>
+    </ng-container>
+
+    <ng-template #itemContent>
+        <mat-icon class="nav-link-icon" *ngIf="item.menuIcon">{{item.menuIcon}}</mat-icon>
+        <span class="nav-link-title">{{item.menuName}}</span>
+        <span class="nav-link-badge" *ngIf="item.badge"
+              [ngStyle]="{'background-color': item.badge.bg,'color': item.badge.fg}">
+            {{item.badge.menuName}}
+        </span>
+        <mat-icon class="collapsed-arrow">keyboard_arrow_right</mat-icon>
+    </ng-template>
+
+</ng-container>

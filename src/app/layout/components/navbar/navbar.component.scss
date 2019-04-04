@@ -1,0 +1,137 @@
+@import "src/@notadd/scss/notadd";
+
+mat-sidenav {
+    overflow: hidden;
+
+    &.collapsed {
+
+        navbar {
+
+            &.vertical-style {
+                width: 90px;
+            }
+
+            .logo-title{
+                display: none;
+            }
+
+            .navbar-scroll-container {
+
+                .logo-wrap {
+                    padding: 10px 0;
+
+                    .logo {
+                        width: 44px;
+                        height: 44px;
+                        position: relative;
+                        top: auto;
+                        padding: 0;
+                        left: 22px;
+
+                        .mat-icon {
+                            @include mat-icon-size(44px);
+                        }
+                    }
+                }
+
+                .navbar-content {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+navbar {
+
+    &.vertical-style {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        width: 220px;
+        height: 100%;
+    }
+
+    .logo-title {
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+        align-items: center;
+        justify-content: center;
+        min-height: 64px;
+        max-height: 64px;
+        line-height: 64px;
+
+        @include media-breakpoint('xs') {
+            min-height: 56px;
+            max-height: 56px;
+            height: 56px;
+        }
+
+        .title {
+            font-size: 22px;
+        }
+
+        .mat-icon {
+            @include mat-icon-size(44px);
+            text-align: center;
+
+            @include media-breakpoint-down('xs') {
+                font-size: 30px !important;
+            }
+
+            width: 100% !important;
+        }
+    }
+
+    .navbar-scroll-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        background: linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 30%),
+        linear-gradient(rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0) 40%);
+
+        background-repeat: no-repeat;
+        background-size: 100% 40px, 100% 10px;
+        background-attachment: local, scroll;
+
+        .logo-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 0 0 64px 0;
+
+            @include media-breakpoint-down('xs') {
+                padding: 15px 0;
+            }
+
+            .logo {
+                position: absolute;
+                top: 26px;
+                border-radius: 50%;
+                padding: 8px;
+                transform: translateX(-50%);
+                left: 50%;
+                width: 80px;
+                height: 80px;
+                margin: 0;
+
+                .mat-icon {
+                    @include mat-icon-size(64px);
+                    transition: all 300ms;
+                }
+            }
+        }
+
+        .navbar-content {
+            flex: 1 1 auto;
+            //margin-top: 32px;
+
+            @include media-breakpoint-down('xs') {
+                margin-top: 0;
+            }
+        }
+    }
+}

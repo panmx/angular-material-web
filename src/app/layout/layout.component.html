@@ -1,0 +1,79 @@
+<main id="main">
+    <!-- toolbar: Above || is mobile -->
+    <ng-container *ngIf="notaddConfig.layout.toolbar.position === 'above' || isMobile">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+
+    <mat-sidenav-container autosize (backdropClick)="onBackdropClick()">
+
+        <!-- navbar -->
+        <mat-sidenav
+            [ngClass]="{'collapsed': notaddConfig.layout.navbar.collapsed}"
+            [opened]="!notaddConfig.layout.navbar.hidden"
+            [mode]="isMobile ? 'over' : 'side'"
+            [position]="notaddConfig.layout.navbar.position">
+            <ng-container *ngTemplateOutlet="navbar"></ng-container>
+        </mat-sidenav>
+
+        <!-- container -->
+        <mat-sidenav-content>
+
+            <!-- toolbar: Below fixed -->
+            <ng-container *ngIf="notaddConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container>
+
+            <div class="container" notaddPerfectScrollbar
+                 [notaddPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+                <!-- toolbar: Below static && is not mobile -->
+                <ng-container *ngIf="notaddConfig.layout.toolbar.position === 'below-static' && !isMobile">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+
+                <!-- content -->
+                <content [isMobile]="isMobile" [hasHeader]="hasContentHeader" [tagsList]="tagsList" [notaddConfig]="notaddConfig" (tagsEvent)="getTagsList($event)"></content>
+
+                <!-- footer: Below static -->
+                <ng-container *ngIf="notaddConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+
+            </div>
+
+            <!-- footer: Below fixed -->
+            <ng-container *ngIf="notaddConfig.layout.footer.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+    <!-- footer: Above -->
+    <ng-container *ngIf="notaddConfig.layout.footer.position === 'above'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+</main>
+
+<!-- toolbar -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!notaddConfig.layout.toolbar.hidden"
+             [isMobile]="isMobile"
+             [ngClass]="[(notaddConfig.layout.navbar.collapsed ? 'toolbar-collapsed' : ''),(isMobile ? 'width-100' : ''), notaddConfig.layout.toolbar.background]" class="toolbar">
+    </toolbar>
+</ng-template>
+
+<!-- footer -->
+<!--<ng-template #footer>-->
+    <!--<footer *ngIf="!notaddConfig.layout.footer.hidden"-->
+            <!--[ngClass]="[notaddConfig.layout.footer.position, notaddConfig.layout.footer.background]">-->
+    <!--</footer>-->
+<!--</ng-template>-->
+
+<!-- navbar -->
+<ng-template #navbar>
+    <navbar class="left-navbar vertical-style"
+            [ngClass]="notaddConfig.layout.navbar.background">
+    </navbar>
+</ng-template>

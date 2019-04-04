@@ -1,0 +1,145 @@
+<mat-toolbar color="primary" class="p-0 mat-elevation-z1">
+
+    <mat-toolbar-row>
+        <div fxFlex fxFlexFill fxLayout="row" fxLayoutAlign="start center">
+
+            <div class="navbar-logo" fxLayout="row" fxLayoutAlign="start center" fxHide.xs *ngIf="rightNavbar || hiddenNavbar">
+                <div class="ml-16">
+                    <h1>后台管理系统</h1>
+                </div>
+                <div class="toolbar-separator" fxHide.xs></div>
+            </div>
+
+            <button mat-icon-button
+                    *ngIf="(!hiddenNavbar && !rightNavbar) || isMobile"
+                    class="navbar-toggle-button"
+                    (click)="onMenuButtonClick()">
+                <mat-icon class="secondary-text" *ngIf="isMobile; else notMobile">{{hiddenNavbar ? 'menu' : 'close'}}</mat-icon>
+                <ng-template #notMobile>
+                    <mat-icon class="secondary-text">menu</mat-icon>
+                </ng-template>
+            </button>
+
+            <!--当前页面标题-->
+            <div class="breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"
+                        *ngFor="let breadcrumb of breadcrumbs; let last = last" >
+                        <!--<a *ngIf="!last" class="" [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>-->
+                        <span *ngIf="!last && breadcrumb.label" class="">{{ breadcrumb.label }}&nbsp;/&nbsp;</span>
+                        <span *ngIf="last">{{ breadcrumb.label }}</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- toolbar nav -->
+            <notadd-toolbar-nav></notadd-toolbar-nav>
+        </div>
+
+        <div fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <!-- not xs breakpoint language template -->
+            <ng-container *ngIf="!isMobile">
+                <ng-container *ngTemplateOutlet="language"></ng-container>
+            </ng-container>
+
+            <!-- search bar -->
+            <!--<notadd-search-bar (input)="search($event)"></notadd-search-bar>-->
+
+            <!-- lock screen -->
+            <!--<button mat-icon-button-->
+                    <!--class="toolbar-button"-->
+                    <!--(click)="onLockButtonClick()">-->
+                <!--<mat-icon class="s-20 secondary-text">lock</mat-icon>-->
+            <!--</button>-->
+
+            <!-- fullscreen toggle -->
+            <button mat-icon-button
+                    fxHide.xs
+                    class="toolbar-button"
+                    (click)="toggleFullscreen()">
+                <mat-icon class="s-24 secondary-text">{{isFullscreen ? 'fullscreen_exit' : 'fullscreen'}}</mat-icon>
+            </button>
+
+            <!-- not xs breakpoint settings template -->
+            <!--<ng-container *ngIf="!isMobile">-->
+                <!--<ng-container *ngTemplateOutlet="settings"></ng-container>-->
+            <!--</ng-container>-->
+
+            <!-- xs breakpoint more button -->
+            <button mat-icon-button
+                    fxHide
+                    fxShow.xs
+                    class="toolbar-button"
+                    (click)="toggleMoreToolbarVisible()">
+                <mat-icon class="secondary-text">more_horiz</mat-icon>
+            </button>
+
+            <!-- right menu -->
+            <button mat-icon-button
+                    *ngIf="rightNavbar && !hiddenNavbar"
+                    class="toolbar-button"
+                    (click)="toggleSidenavCollapsed()">
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+
+
+            <!-- not xs breakpoint user template -->
+            <ng-container *ngIf="!isMobile">
+                <ng-container *ngTemplateOutlet="user"></ng-container>
+            </ng-container>
+        </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="isMoreToolbarVisible" class="more-toolbar" fxLayout="column nowrap">
+        <mat-divider class="more-divider"></mat-divider>
+        <div fxFlexFill fxLayout="row nowrap" fxLayoutAlign="end center">
+            <ng-container *ngTemplateOutlet="user"></ng-container>
+            <ng-container *ngTemplateOutlet="language"></ng-container>
+            <ng-container *ngTemplateOutlet="settings"></ng-container>
+        </div>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+<!-- user -->
+<ng-template #user>
+    <button mat-button [matMenuTriggerFor]="userMenu"
+            class="toolbar-button"
+            [ngClass.gt-xs]="'h-64'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <img class="avatar" src="assets/images/my.png">
+            <span class="secondary-text">{{userName}}</span>
+            <mat-icon class="s-20">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+
+    <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+
+        <button mat-menu-item routerLink="/user/person">
+            <mat-icon>account_circle</mat-icon>
+            <span>个人信息</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item (click)="loginOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>退出</span>
+        </button>
+
+    </mat-menu>
+
+</ng-template>
+
+<!-- settings -->
+<ng-template #settings>
+    <button mat-icon-button
+            class="toolbar-button"
+            (click)="toggleSidebarOpen('themeOptionsPanel')">
+        <mat-icon class="s-20 secondary-text">settings</mat-icon>
+    </button>
+
+    <div *ngIf="rightNavbar" class="toolbar-separator"></div>
+</ng-template>

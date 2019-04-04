@@ -1,0 +1,98 @@
+<div class="theme-options-panel" notaddPerfectScrollbar>
+    <form [formGroup]="form" class="h-60-p">
+        <!-- layout style-->
+        <mat-tab-group formGroupName="layout" class="theme-panel" color="accent">
+
+            <!-- layout width -->
+            <mat-tab *ngIf="!isMobile" label="布局宽度">
+                <div class="group">
+
+                    <h3 class="ml-12">布局宽度</h3>
+                    <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
+                        <mat-radio-button class="ml-12 mb-12" value="fullwidth">Fullwidth</mat-radio-button>
+                        <mat-radio-button class="ml-12 mb-12" value="boxed">Boxed</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+            </mat-tab>
+
+            <!-- toolbar -->
+            <mat-tab label="导航栏">
+                <div class="group" formGroupName="toolbar">
+
+                    <h3 class="ml-12" fxHide fxShow.gt-xs fxLayout="row nowrap" fxLayoutAlign="space-between center">
+                        <span>隐藏</span>
+                        <mat-slide-toggle class="mr-12" formControlName="hidden"></mat-slide-toggle>
+                    </h3>
+
+                    <h3 class="ml-12" fxHide fxShow.gt-xs>位置</h3>
+                    <mat-radio-group class="ml-12" fxLayout="column" fxLayoutAlign="start start" formControlName="position" fxHide fxShow.gt-xs>
+                        <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
+                        <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
+                        <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
+                    </mat-radio-group>
+
+                    <h3 class="ml-12 mt-16">背景颜色</h3>
+                    <notadd-material-color-picker class="ml-12" formControlName="background">
+                    </notadd-material-color-picker>
+
+                </div>
+            </mat-tab>
+
+            <!-- navbar -->
+            <mat-tab label="侧边栏">
+                <div class="group" formGroupName="navbar">
+
+                    <h3 class="ml-12" fxHide fxShow.gt-xs fxLayout="row nowrap" fxLayoutAlign="space-between center">
+                        <span>隐藏</span>
+                        <mat-slide-toggle class="mr-12" formControlName="hidden"></mat-slide-toggle>
+                    </h3>
+
+                    <h3 class="ml-12" fxLayout="row nowrap" fxLayoutAlign="space-between center">
+                        <span>折叠</span>
+                        <mat-slide-toggle class="mr-12" formControlName="collapsed"></mat-slide-toggle>
+                    </h3>
+
+                    <h3 class="ml-12" fxHide fxShow.gt-xs>位置</h3>
+                    <mat-radio-group class="ml-12" fxLayout="column" fxLayoutAlign="start start" formControlName="position" fxHide fxShow.gt-xs>
+                        <mat-radio-button class="mb-12" value="start">左</mat-radio-button>
+                        <mat-radio-button class="mb-12" value="end">右</mat-radio-button>
+                    </mat-radio-group>
+
+                    <h3 class="ml-12 mt-16">颜色</h3>
+                    <div>
+                        <notadd-material-color-picker class="ml-12 mb-16" formControlName="secondaryBackground"></notadd-material-color-picker>
+                        <notadd-material-color-picker class="ml-12 mb-16" formControlName="background"></notadd-material-color-picker>
+                    </div>
+
+                </div>
+
+            </mat-tab>
+
+            <!-- footer -->
+            <!--<mat-tab label="底部">-->
+                <!--<div class="group mt-24" formGroupName="footer">-->
+
+                    <!--<h3 class="ml-12" fxLayout="row nowrap" fxLayoutAlign="space-between center">-->
+                        <!--<span>隐藏</span>-->
+                        <!--<mat-slide-toggle class="mr-12" formControlName="hidden"></mat-slide-toggle>-->
+                    <!--</h3>-->
+
+                    <!--<h3 class="ml-12" fxHide fxShow.gt-xs>位置</h3>-->
+                    <!--<mat-radio-group class="ml-12" fxLayout="column" fxLayoutAlign="start start" formControlName="position" fxHide fxShow.gt-xs>-->
+                        <!--<mat-radio-button class="mb-12" value="above">Above</mat-radio-button>-->
+                        <!--<mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>-->
+                        <!--<mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>-->
+                    <!--</mat-radio-group>-->
+
+                    <!--<h3 class="ml-12 mt-16">背景颜色</h3>-->
+                    <!--<notadd-material-color-picker class="ml-12 mb-16" formControlName="background"></notadd-material-color-picker>-->
+
+                <!--</div>-->
+            <!--</mat-tab>-->
+        </mat-tab-group>
+    </form>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <button class="w-80-p" (click)="resetConfig()" mat-raised-button color="accent">重置主题配置</button>
+    </div>
+</div>

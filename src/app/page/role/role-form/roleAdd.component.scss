@@ -1,0 +1,80 @@
+@import "src/@notadd/scss/notadd";
+@import "src/@notadd/scss/common";
+
+.right-content {
+    padding: 30px;
+
+    .my-content {
+        width: 100%;
+        background: #fff;
+        padding: 10px 20px;
+    }
+
+    .info-title {
+        font-size: 14px;
+        line-height: 34px;
+        color: #333;
+        border-bottom: 1px solid #cfd0d8;
+    }
+
+    .menu-authority{
+        margin: 0 0 0 180px;
+    }
+
+    .menu-authority mat-checkbox{
+        margin: 0 20px 0 0;
+    }
+
+
+    form{
+        margin: 40px 0 0 60px;
+    }
+
+    .form-item-label{
+        width: 90px;
+        text-align: right;
+    }
+
+    .role-authority{
+        position: relative;
+        top: 20px;
+    }
+
+    .btn-margin {
+        margin: 20px auto;
+    }
+
+    .btn-margin button{
+        margin: 0 20px 0 0;
+    }
+
+    .example-radio-button{
+        margin: 0 15px 0 15px;
+    }
+
+    .my-table table{
+        width: 100%;
+    }
+
+    .save-btn-top{
+        position: absolute;
+        top: 20px;
+        left: 350px;
+        z-index: 1;
+    }
+    .save-btn-top button{
+        margin:  0 20px 0 0;
+    }
+
+}
+
+@include media-breakpoint('xs') {
+
+    .right-content {
+        padding: 15px;
+
+        .my-content {
+            padding: 15px 20px;
+        }
+    }
+}

@@ -1,0 +1,82 @@
+<div class="right-content">
+    <mat-card class="my-content" id="my-content">
+        <mat-tab-group>
+            <mat-tab label="个人信息">
+                <form class="my-info">
+                    <img mat-card-avatar src="../../../../assets/images/my.png">
+                    <div class="form-item">
+                        <div class="form-item-label">账号：</div>
+                        <div class="form-item-control">
+                            {{user.userCode}}
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">姓名：</div>
+                        <div class="form-item-control">
+                            {{user.userName}}
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">手机号：</div>
+                        <div class="form-item-control">
+                            {{user.userPhone}}
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">邮箱：</div>
+                        <div class="form-item-control">
+                            {{user.userEmail}}
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">状态：</div>
+                        <div class="form-item-control">
+                            启用
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">角色：</div>
+                        <div class="form-item-control">
+                            {{user.roleName}}
+                        </div>
+                    </div>
+                </form>
+            </mat-tab>
+            <mat-tab label="修改密码">
+                <form class="my-info">
+                    <div class="form-item">
+                        <div class="form-item-label">旧密码：</div>
+                        <div class="form-item-control">
+                            <input class="input-medium" type="password" [(ngModel)]="updatePwdObj.oldPassword"
+                                   name="oldPassword"
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">新密码：</div>
+                        <div class="form-item-control">
+                            <input class="input-medium" type="password" [(ngModel)]="updatePwdObj.password"
+                                   name="password"
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-label">确认密码：</div>
+                        <div class="form-item-control">
+                            <input class="input-medium" type="password" [(ngModel)]="updatePwdObj.rePassword"
+                                   name="isLoadUpdatePwd"
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-control form-item-btn">
+                            <button type="button" class="my-btn my-btn-medium btn-blue" [disabled]="isLoadUpdatePwd" (click)="updatePwd()">
+                                {{isLoadUpdatePwd ? '修改中···': '修改密码'}}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>

@@ -1,0 +1,40 @@
+@import "src/@notadd/scss/notadd";
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+:host {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+
+    .group {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        margin: 12px;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.54);
+            margin: 10px 0 16px 0;
+            padding: 0;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        .mat-radio-button {
+            font-size: 14px;
+        }
+    }
+
+}

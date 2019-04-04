@@ -1,0 +1,6 @@
+<div class="nav">
+    <ng-container *ngFor="let item of navigation">
+        <notadd-nav-collapse *ngIf="item.childMenus" [item]="item"></notadd-nav-collapse>
+        <notadd-nav-item *ngIf="!item.childMenus" [item]="item"></notadd-nav-item>
+    </ng-container>
+</div>

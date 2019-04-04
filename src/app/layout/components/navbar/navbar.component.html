@@ -1,0 +1,16 @@
+<div class="logo-title" [ngClass]="notaddConfig.layout.navbar.secondaryBackground">
+    <h1 class="title">后台管理系统</h1>
+</div>
+<div class="navbar-scroll-container" notaddPerfectScrollbar [notaddPerfectScrollbarOptions]="{suppressScrollX: true, isInvisible: true}">
+    <!--菜单折叠，显示logo-->
+    <div *ngIf="notaddConfig.layout.navbar.collapsed" class="logo-wrap" [ngClass]="notaddConfig.layout.navbar.secondaryBackground" fxLayout="column" fxHide.xs>
+        <div class="logo" [ngClass]="notaddConfig.layout.navbar.background">
+            <img src="../../../../assets/images/logo.jpg">
+        </div>
+    </div>
+
+    <div class="navbar-content">
+        <notadd-navigation></notadd-navigation>
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+@import "src/@notadd/scss/notadd";
+@import "src/@notadd/scss/common";
+
+.right-content {
+    padding: 30px;
+
+    .my-content {
+        padding: 9px;
+        width: 100%;
+
+        .my-info {
+            margin: 0;
+            padding: 30px 60px;
+            color: #333;
+        }
+        .form-item-label {
+            width: 90px;
+            text-align: right;
+        }
+
+        .form-item-control {
+            color: #333;
+        }
+
+        .mat-card-avatar {
+            width: 130px;
+            height: 130px;
+            margin: 0 0 10px 30px;
+        }
+        .form-item-btn {
+            margin: 0 0 0 120px;
+        }
+    }
+
+}
+
+@include media-breakpoint('xs') {
+
+    .right-content {
+        padding: 15px;
+
+        .my-content {
+            padding: 30px 20px;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.notadd-material-color-picker-menu {
+    width: 228px;
+
+    .mat-menu-content {
+        padding: 0 !important;
+
+        .views {
+            display: flex;
+            flex-direction: column;
+            background-color: #404040;
+
+            .view {
+                overflow: hidden;
+
+                .colors {
+                    padding: 4px;
+
+                    .color {
+                        position: relative;
+                        width: 40px;
+                        height: 40px;
+                        margin: 2px;
+                        border-radius: 0;
+                        cursor: pointer;
+                        transition: border-radius .4s cubic-bezier(.25, .8, .25, 1);
+
+                        &:hover {
+                            border-radius: 20%;
+                        }
+
+                        &.selected {
+                            border-radius: 50% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+<div class="right-content">
+    <div class="my-content">
+        <div class="info-title">{{role.id ? '修改角色' : '新增角色'}}
+            <span class="return-beforePage" (click)="toBeforePage()">返回</span>
+        </div>
+        <form class="my-info">
+            <div class="form-item">
+                <div class="form-item-label"><span class="color-red">*</span>角色名称：</div>
+                <div class="form-item-control">
+                    <input class="input-medium" type="input" [(ngModel)]="role.roleName"
+                           name="roleName"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="form-item-label"><span class="color-red">*</span>类型：</div>
+                <div class="form-item-control">
+                    <select class="input-medium" required [(ngModel)]="role.roleType" name="roleType">
+                        <option *ngFor="let item of roleTypeList" [value]="item.value">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="form-item-label">描述：</div>
+                <div class="form-item-control">
+                    <input class="input-medium" type="input" [(ngModel)]="role.description"
+                           name="description"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="form-item-label">状态：</div>
+                <div class="form-item-control">
+                    <mat-radio-group class="example-radio-group" [(ngModel)]="role.state" name="state">
+                        <mat-radio-button class="example-radio-button" *ngFor="let item of stateList" [value]="item.value">
+                            {{item.label}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="role-authority flex-row">
+                <div class="form-item-label">角色权限：</div>
+                <div class="form-item-control">
+                    <mat-tree [dataSource]="treeSource" [treeControl]="treeControl">
+                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                            <button mat-icon-button disabled></button>
+                            <mat-checkbox class="checklist-leaf-node"
+                                          [checked]="checklistSelection.isSelected(node)"
+                                          (change)="todoLeafItemSelectionToggle(node)">{{node.menuName}}</mat-checkbox>
+                            <div class="menu-authority">
+                                <mat-checkbox [(ngModel)]="node.addAuthorityBoolean" [name]="node.id + '-addAuthority'">新增</mat-checkbox>
+                                <mat-checkbox [(ngModel)]="node.updateAuthorityBoolean" [name]="node.id + '-updateAuthority'">修改</mat-checkbox>
+                                <mat-checkbox [(ngModel)]="node.deleteAuthorityBoolean" [name]="node.id + '-deleteAuthority'">删除</mat-checkbox>
+                            </div>
+                        </mat-tree-node>
+
+                        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                            <button mat-icon-button matTreeNodeToggle
+                                    [attr.aria-label]="'toggle ' + node.menuName">
+                                <mat-icon class="mat-icon-rtl-mirror">
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                            </button>
+                            <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                          [indeterminate]="descendantsPartiallySelected(node)"
+                                          (change)="todoItemSelectionToggle(node)">{{node.menuName}}</mat-checkbox>
+                        </mat-tree-node>
+                    </mat-tree>
+                </div>
+            </div>
+
+            <div class="form-item btn-margin">
+                <div class="form-item-control form-item-btn input-medium text-align-right">
+                    <button type="button" class="my-btn my-btn-medium" (click)="toBeforePage()">返回</button>
+                    <button type="button" class="my-btn my-btn-medium btn-blue" [ngClass]="{'is-disabled': isLoading}" [disabled]="isLoading" (click)="saveRoleClick()">
+                        {{isLoading ? '保存中···': '保存'}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

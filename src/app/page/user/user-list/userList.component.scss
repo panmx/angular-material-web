@@ -1,0 +1,203 @@
+@import "src/@notadd/scss/notadd";
+@import "src/@notadd/scss/common";
+
+.right-content {
+    padding: 30px;
+
+    .my-content {
+        width: 100%;
+    }
+
+    .add-btn{
+        margin: 0 0 0 10px;
+    }
+
+    .fresh-ul {
+        list-style: none;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        padding: 0;
+        color: #9a9aa6;
+    }
+
+    .fresh-ul li {
+        width: 80px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .fresh-ul li div:first-child {
+        margin: 0 0 5px 0;
+    }
+
+    .fresh-ul img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .my-table {
+        margin: 0 10px 20px 10px;
+        .example-container {
+            //height: 66vh;
+            width: 100%;
+            //width: 600px;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            //width: 600px;
+        }
+
+        td.mat-column-star {
+            width: 20px;
+            padding-right: 8px;
+        }
+
+        th.mat-column-position, td.mat-column-position {
+            padding-left: 8px;
+        }
+
+        //.mat-table-sticky:first-child {
+        //    border-right: 1px solid #e0e0e0;
+        //}
+        //
+        //.mat-table-sticky:last-child {
+        //    border-left: 1px solid #e0e0e0;
+        //}
+
+        mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+            border-bottom-color: #e8e8e8;
+            color: #666;
+            font-size: 14px;
+        }
+
+        tr.mat-header-row {
+            height: 44px;
+        }
+        mat-row, mat-header-row, mat-footer-row, th.mat-header-cell {
+            background: #fafafa;
+            color: #333;
+        }
+
+        .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+            background-color: #40a9ff;
+        }
+
+    }
+
+    .search-form {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        margin: 15px 0 0 0;
+    }
+
+    .isNew {
+        font-size: 10px;
+        background: #ffcc00;
+        color: #fff;
+        text-align: center;
+        width: 40px;
+        height: 20px;
+    }
+
+    .btn-margin {
+        margin: 0 20px 0 0;
+    }
+
+    /* 遮蔽层 */
+    #cover_cover {
+        z-index: 99;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #000 none repeat scroll 0 0;
+        opacity: 0.35;
+    }
+
+    .poppver-center {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        width: 60%;
+        min-width: 400px;
+        height: 70vh;
+        margin: -290px 0 0 0;
+        border-radius: 8px;
+        font-size: 18px;
+        z-index: 100;
+        background: #fff;
+        color: #333;
+    }
+
+    .popover-title {
+        padding: 10px 15px;
+        border-bottom: 1px solid #2979ff;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .popover-content {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin: 30px auto 0;
+        width: 400px;
+    }
+
+    .spend-time-title {
+        font-size: 14px;
+        color: #2979ff;
+        font-weight: bold;
+        line-height: 30px;
+        border-bottom: 1px solid #2979ff;
+    }
+
+    .two-select {
+        width: 200px;
+    }
+
+    .two-picker {
+        width: 150px;
+    }
+
+    .time-count {
+        width: 100px;
+    }
+
+    .popover-footer {
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .cvnTitle {
+        width: 150px;
+    }
+
+    .row-active {
+        background: #e6f7ff;
+    }
+}
+
+@include media-breakpoint('xs') {
+
+    .right-content {
+        padding: 15px;
+
+        .my-content {
+            padding: 15px 20px;
+        }
+    }
+}

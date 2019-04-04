@@ -1,0 +1,48 @@
+button,
+input[type=email],
+input[type=tel],
+input[type=text],
+input[type=password],
+input[type=image],
+input[type=submit],
+input[type=button],
+input[type=search],
+textarea {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+[color-white] {
+    color: #fff;
+
+    .mat-input-element {
+        caret-color: #ddd;
+    }
+
+    .mat-form-field-label {
+        color: #ddd;
+    }
+
+    .mat-form-field-underline {
+        background-color: #ddd;
+    }
+
+    .mat-checkbox-frame {
+        border-color: #fff;
+        background: #fff;
+    }
+
+    .mat-form-field-outline {
+        color: #fff;
+        // background: rgba(255, 255, 255, .5);
+        // border-radius: 5px;
+    }
+}
+
+[required-color-red] {
+    .mat-placeholder-required {
+        color: #f00;
+    }
+}

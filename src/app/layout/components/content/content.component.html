@@ -1,0 +1,36 @@
+<!--<content-header *ngIf="hasHeader"></content-header>-->
+<div>
+    <div class="tags-list flex-row" [ngClass]="[(notaddConfig.layout.navbar.collapsed ? 'tags-list-collapsed' : ''), (isMobile ? 'width-100' : '')]">
+        <div class="position-left flex-row" [ngClass]="[(notaddConfig.layout.navbar.collapsed ? 'position-left-collapsed' : '')]">
+            <div *ngFor="let item of tagsList; let idx=index;" class="tags-item flex-row ellipsis" [ngClass]="{'active': item.isSelect}">
+                <div (click)="toPage(item)" class="ellipsis">{{item.title}}</div>&nbsp;
+                <div (click)="closeTags(idx)">x</div>
+            </div>
+        </div>
+        <div class="position-right">
+            <div class="tags-item" [matMenuTriggerFor]="closeOtherMenu" fxLayout="row" fxLayoutAlign="center center">
+                关闭标签页
+                <mat-icon class="s-20">keyboard_arrow_down</mat-icon>
+            </div>
+            <mat-menu #closeOtherMenu="matMenu" [overlapTrigger]="false">
+                <button mat-menu-item (click)="closeOther()">
+                    <span class="font-size-13">关闭其他</span>
+                </button>
+                <button mat-menu-item (click)="closeAll()">
+                    <span class="font-size-13">关闭所有</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <!--右键关闭其他/关闭全部-->
+        <div class='contextmenu' *ngIf="visible" :style="{'left':left +'px', 'top': '24px'}">
+            <div (click)="refreshClick()">刷新</div>
+            <div (click)="closeTagsBySelectedTag()">关闭</div>
+            <div (click)="closeOtherBySelectedTag()">关闭其他</div>
+            <div (click)="closeAll()">关闭所有</div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <router-outlet *ngIf="true"></router-outlet>
+</div>
