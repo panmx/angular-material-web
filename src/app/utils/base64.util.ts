@@ -59,13 +59,13 @@ export let Base64Util = {
                     _keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
                     _keyStr.charAt(enc3) + _keyStr.charAt(enc4)
             }
-            output = 'panmx' + output // 本行可注释，如果注释，this.decode方法内的 input = input.substr(3, input.length) 这行代码也要注释
+            output = 'pmx' + output // 本行可注释，如果注释，this.decode方法内的 input = input.substr(3, input.length) 这行代码也要注释
             return output
         }
 
         // public method for decoding
         this.decode = function (input) { // 解密
-            input = input.substr(3, input.length) // 本行可注释，如果注释，this.encode方法内的 output = 'panmx' + output 这行代码也要注释
+            input = input.substr(3, input.length) // 本行可注释，如果注释，this.encode方法内的 output = 'pmx' + output 这行代码也要注释
             let output = ''
             let chr1, chr2, chr3
             let enc1, enc2, enc3, enc4
