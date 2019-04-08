@@ -10,7 +10,7 @@ import {environment} from '@env';
     encapsulation: ViewEncapsulation.None
 })
 export class ContentComponent implements OnInit {
-    @Input() public tagsList: any;@Input()
+    @Input() public tagsList: any;
     @Input() isMobile: boolean;
     @Input() hasHeader: boolean;
     @Input() notaddConfig: any;
@@ -29,6 +29,10 @@ export class ContentComponent implements OnInit {
         this.router.navigateByUrl(item.path);
     }
 
+    /**
+     * 关闭指定标签
+     * @param index
+     */
     closeTags(index) {
         if(this.tagsList && this.tagsList.length == 1 && this.tagsList[0].path.indexOf('/user/person')>=0){
             return;
@@ -51,6 +55,9 @@ export class ContentComponent implements OnInit {
 
     }
 
+    /**
+     * 关闭其他
+     */
     closeOther(){
         this.router.navigateByUrl(this.router.url);
         const curItem = this.tagsList.filter(item => {
@@ -69,7 +76,9 @@ export class ContentComponent implements OnInit {
         this.tagsEvent.emit(this.tagsList);
     }
 
-    // 关闭全部标签
+    /**
+     * 关闭全部标签
+     */
     closeAll(){
         const curItem = this.tagsList.filter(item => {
             // 删除复用
