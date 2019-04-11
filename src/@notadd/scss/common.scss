@@ -71,14 +71,17 @@ form .form-item {
 
 .input-large{
     width: 400px !important;
+    max-width: 100%;
 }
 
 .input-medium{
     width: 200px !important;
+    max-width: 100%;
 }
 
 .input-small{
     width: 160px !important;
+    max-width: 100%;
 }
 
 .text-align-left{
@@ -322,11 +325,27 @@ form .form-item {
 .my-editor{
     margin: 0 0 30px 0;
     width: 850px;
-    max-width: 90%;
+    max-width: 100%;
     position: relative;
 
 }
 /*重写checkbox，radio样式*/
 .mat-checkbox, .mat-radio-button{
     font-size: 14px;
+}
+.mat-dialog-container {
+    padding: 10px 10px !important;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 8px;
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 8px;
+}
+.mat-paginator-range-label {
+    margin: 0  10px !important;
+}
+
+.mat-form-field-wrapper{
+    font-size: 14px !important;
 }

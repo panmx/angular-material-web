@@ -6,65 +6,52 @@
                     <button type="button" class="my-btn my-btn-medium btn-blue" (click)="add()">+ 新增</button>
                 </div>
             </form>
-            <!--<div class="pull-right">-->
-                <!--<form class="flex-row" (keyup.enter)="doSearch()">-->
-                    <!--<div class="form-item">-->
-                        <!--<div class="form-item-label">关键词：</div>-->
-                        <!--<div class="form-item-control">-->
-                            <!--<input class="input-large" [(ngModel)]="searchName" name="searchName" placeholder="账号/姓名/手机号">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="form-item">-->
-                        <!--<div class="form-item-control form-item-btn">-->
-                            <!--<button type="button" class="my-btn my-btn-medium btn-blue" (click)="doSearch()">查询</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-            <!--</div>-->
         </div>
         <div class="my-table">
-            <table mat-table [dataSource]="roleArr">
-                <ng-container matColumnDef="roleName" sticky>
-                    <th mat-header-cell *matHeaderCellDef>角色名称</th>
-                    <td mat-cell *matCellDef="let element" width="120" (click)="toPageDetail(element)">
-                        <span class="color-blue cursor-pointer underline">{{element.roleName}}</span>
-                    </td>
-                </ng-container>
+            <div class="example-container">
+                <table mat-table [dataSource]="roleArr">
+                    <ng-container matColumnDef="roleName" sticky>
+                        <th mat-header-cell *matHeaderCellDef>角色名称</th>
+                        <td mat-cell *matCellDef="let element" width="120" style="min-width: 80px;" (click)="toPageDetail(element)">
+                            <span class="color-blue cursor-pointer underline">{{element.roleName}}</span>
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="roleType">
-                    <th mat-header-cell *matHeaderCellDef>角色类型</th>
-                    <td mat-cell *matCellDef="let element" width="100">{{getLabel(element.roleType, roleTypeList)}}</td>
-                </ng-container>
+                    <ng-container matColumnDef="roleType">
+                        <th mat-header-cell *matHeaderCellDef>角色类型</th>
+                        <td mat-cell *matCellDef="let element" width="100" style="min-width: 80px;">{{getLabel(element.roleType, roleTypeList)}}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef>描述</th>
-                    <td mat-cell *matCellDef="let element" width="120">
-                        <div class="userName ellipsis">{{element.description}}</div>
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef>描述</th>
+                        <td mat-cell *matCellDef="let element" width="120" style="min-width: 80px;">
+                            <div class="userName ellipsis">{{element.description}}</div>
+                        </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="state">
-                    <th mat-header-cell *matHeaderCellDef>状态</th>
-                    <td mat-cell *matCellDef="let element" width="90">{{getLabel(element.state, userStateList)}}</td>
-                </ng-container>
+                    <ng-container matColumnDef="state">
+                        <th mat-header-cell *matHeaderCellDef>状态</th>
+                        <td mat-cell *matCellDef="let element" width="60" style="min-width: 60px;">{{getLabel(element.state, userStateList)}}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="updateDate">
-                    <th mat-header-cell *matHeaderCellDef>修改时间</th>
-                    <td mat-cell *matCellDef="let element" width="120"> {{element.updateDate}}</td>
-                </ng-container>
+                    <ng-container matColumnDef="updateDate">
+                        <th mat-header-cell *matHeaderCellDef>修改时间</th>
+                        <td mat-cell *matCellDef="let element" width="120" style="min-width: 130px;"> {{element.updateDate}}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="opr" stickyEnd>
-                    <th mat-header-cell *matHeaderCellDef>操作</th>
-                    <td mat-cell *matCellDef="let element" width="120">
-                        <!--<label class="underline color-blue cursor-pointer" (click)="toPageDetail(element)">查看</label>-->
-                        <label class="underline color-blue cursor-pointer fenpei" (click)="toUpdateRole(element)">权限分配</label>
-                    </td>
-                </ng-container>
+                    <ng-container matColumnDef="opr" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef>操作</th>
+                        <td mat-cell *matCellDef="let element" width="120" style="min-width: 80px;">
+                            <!--<label class="underline color-blue cursor-pointer" (click)="toPageDetail(element)">查看</label>-->
+                            <label class="underline color-blue cursor-pointer fenpei" (click)="toUpdateRole(element)">权限分配</label>
+                        </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickRow(row)"
-                    [ngClass]="{'row-active': (curCheckedUser.roleName && row.roleName == curCheckedUser.roleName)}"></tr>
-            </table>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickRow(row)"
+                        [ngClass]="{'row-active': (curCheckedUser.roleName && row.roleName == curCheckedUser.roleName)}"></tr>
+                </table>
+            </div>
             <!--分页-->
             <mat-paginator #paginator [length]="totalCount" [pageSize]="pageSize"
                            (page)="changeTaskPage($event)" [pageSizeOptions]="[10, 20, 30]"

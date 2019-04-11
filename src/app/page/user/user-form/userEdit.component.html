@@ -2,75 +2,75 @@
     <mat-card class="my-content" id="my-content">
         <mat-tab-group (selectedTabChange)="clickTab($event)" style="position: relative">
             <mat-tab label="用户信息">
-                <form class="my-info">
-                    <div class="form-item">
-                        <div class="form-item-label"><span class="color-red">*</span>账号：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" [disabled]="saveUser.userId" type="input" [(ngModel)]="saveUser.userCode"
-                                   name="userCode"
-                                   placeholder="">
+                <div class="my-form">
+                    <form class="my-info">
+                        <div class="form-item">
+                            <div class="form-item-label"><span class="color-red">*</span>账号：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" [disabled]="saveUser.userId" type="input" [(ngModel)]="saveUser.userCode"
+                                       name="userCode"
+                                       placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="form-item-label"><span class="color-red">*</span>姓名：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" type="input" [(ngModel)]="saveUser.userName"
-                                   name="userName"
-                                   placeholder="">
+                        <div class="form-item">
+                            <div class="form-item-label"><span class="color-red">*</span>姓名：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" type="input" [(ngModel)]="saveUser.userName"
+                                       name="userName"
+                                       placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="form-item-label">密码：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" type="password" [(ngModel)]="saveUser.password"
-                                   name="password"
-                                   placeholder="">
-                            <span>&nbsp;&nbsp;(密码为空，默认不修改)</span>
+                        <div class="form-item">
+                            <div class="form-item-label">密码：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" type="password" [(ngModel)]="saveUser.password"
+                                       name="password"
+                                       placeholder="">
+                                <span>&nbsp;&nbsp;(密码为空，默认不修改)</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="form-item-label">确认密码：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" type="password" [(ngModel)]="saveUser.rePassword"
-                                   name="rePassword"
-                                   placeholder="">
+                        <div class="form-item">
+                            <div class="form-item-label">确认密码：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" type="password" [(ngModel)]="saveUser.rePassword"
+                                       name="rePassword"
+                                       placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="form-item-label"><span class="color-red">*</span>手机号：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" type="input" [(ngModel)]="saveUser.userPhone"
-                                   name="userPhone"
-                                   placeholder="">
+                        <div class="form-item">
+                            <div class="form-item-label"><span class="color-red">*</span>手机号：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" type="input" [(ngModel)]="saveUser.userPhone"
+                                       name="userPhone"
+                                       placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="form-item-label">邮箱：</div>
-                        <div class="form-item-control">
-                            <input class="input-medium" type="input" [(ngModel)]="saveUser.userEmail"
-                                   name="userEmail"
-                                   placeholder="">
+                        <div class="form-item">
+                            <div class="form-item-label">邮箱：</div>
+                            <div class="form-item-control">
+                                <input class="input-medium" type="input" [(ngModel)]="saveUser.userEmail"
+                                       name="userEmail"
+                                       placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex-row">
-                        <div class="form-item-label">状态：</div>
-                        <div class="form-item-control">
-                            <mat-radio-group class="example-radio-group" [(ngModel)]="saveUser.state" name="state">
-                                <mat-radio-button class="example-radio-button" *ngFor="let item of stateList" [value]="item.value">
-                                    {{item.label}}
-                                </mat-radio-button>
-                            </mat-radio-group>
+                        <div class="flex-row">
+                            <div class="form-item-label">状态：</div>
+                            <div class="form-item-control">
+                                <mat-radio-group class="example-radio-group" [(ngModel)]="saveUser.state" name="state">
+                                    <mat-radio-button class="example-radio-button" *ngFor="let item of stateList" [value]="item.value">
+                                        {{item.label}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-item btn-margin">
-                        <div class="form-item-control form-item-btn input-medium text-align-right">
+                        <div class="form-item btn-margin">
                             <button type="button" class="my-btn my-btn-medium" (click)="toBeforePage()">返回</button>
                             <button type="button" class="my-btn my-btn-medium btn-blue" [ngClass]="{'is-disabled': isLoading}" [disabled]="isLoading" (click)="saveUserClick()">
-                                {{isLoading ? '保存中···': '保存'}}
+                                保存
                             </button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </mat-tab>
             <mat-tab label="权限分配">
                 <div class="my-table">
@@ -83,7 +83,7 @@
                                     [indeterminate]="selection.hasValue() && !isAllSelected()">
                                 </mat-checkbox>
                             </th>
-                            <td mat-cell *matCellDef="let row" width="50" style="min-width: 130px;">
+                            <td mat-cell *matCellDef="let row" style="min-width: 40px;">
                                 <mat-checkbox (click)="$event.stopPropagation()"
                                     (change)="$event ? selection.toggle(row) : null"
                                     [checked]="selection.isSelected(row)">
@@ -111,7 +111,7 @@
 
                         <ng-container matColumnDef="state">
                             <th mat-header-cell *matHeaderCellDef>状态</th>
-                            <td mat-cell *matCellDef="let element" width="90">{{getLabel(element.state, userStateList)}}</td>
+                            <td mat-cell *matCellDef="let element" width="50">{{getLabel(element.state, userStateList)}}</td>
                         </ng-container>
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
@@ -123,7 +123,7 @@
         <div class="save-btn-top">
             <button type="button" class="my-btn my-btn-medium" (click)="toBeforePage()">返回</button>
             <button type="button" class="my-btn my-btn-medium btn-blue" [ngClass]="{'is-disabled': isLoading}" [disabled]="isLoading" (click)="saveUserClick()">
-                {{isLoading ? '保存中···': '保存'}}
+                保存
             </button>
         </div>
     </mat-card>

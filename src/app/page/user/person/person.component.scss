@@ -9,8 +9,7 @@
         width: 100%;
 
         .my-info {
-            margin: 0;
-            padding: 30px 60px;
+            margin: 30px 60px;
             color: #333;
         }
         .form-item-label {
@@ -37,10 +36,20 @@
 @include media-breakpoint('xs') {
 
     .right-content {
-        padding: 15px;
+        padding: 10px 12px;
 
         .my-content {
-            padding: 30px 20px;
+            padding: 10px;
+
+            .my-info {
+                margin: 30px auto;
+            }
+
+            .input-medium{
+                width: 160px !important;
+                max-width: 100%;
+            }
+
         }
     }
 }

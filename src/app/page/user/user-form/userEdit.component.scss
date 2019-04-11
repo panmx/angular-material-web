@@ -14,8 +14,14 @@
         padding: 0 18px 10px 18px;
     }
 
-    form{
-        margin: 40px 0 0 60px;
+    .my-form{
+        width: 600px;
+        max-width: 100%;
+    }
+    .my-info {
+        margin: 30px auto;
+        width: 400px;
+        max-width: 100%;
     }
 
     .form-item-label{
@@ -25,6 +31,7 @@
 
     .btn-margin {
         margin: 20px auto;
+        justify-content: center;
     }
 
     .btn-margin button{
@@ -42,7 +49,7 @@
     .save-btn-top{
         position: absolute;
         top: 20px;
-        left: 350px;
+        left: 320px;
         z-index: 1;
     }
     .save-btn-top button{
@@ -54,10 +61,32 @@
 @include media-breakpoint('xs') {
 
     .right-content {
-        padding: 15px;
+        padding: 10px 12px;
 
         .my-content {
-            padding: 15px 20px;
+            padding: 10px;
+        }
+
+        .input-medium{
+            width: 160px !important;
+            max-width: 100%;
+        }
+        .form-item{
+            margin: 0 0 5px 0;
+        }
+        .btn-margin{
+            margin: 15px auto;
+           justify-content: center;
+        }
+
+        .save-btn-top{
+            position: absolute;
+            top: 20px;
+            left: 210px;
+            z-index: 1;
+        }
+        .save-btn-top button{
+            margin:  0 10px 0 0;
         }
     }
 }
